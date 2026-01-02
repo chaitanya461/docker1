@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./web
+    container_name: php-web
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+
+  mysql:
+    build: ./mysql                 # 👈 Uses MySQL Dockerfile
+    container_name: mysql-db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - mysql-data:/var/lib/mysql   # Persistent storage
+    ports:
+      - "3306:3306"                 # Optional (for debugging)
+volumes:
+mysql-data:
