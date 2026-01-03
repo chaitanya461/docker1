@@ -28,4 +28,4 @@ services:
     ports:
       - "3306:3306"                 # Optional (for debugging)
 volumes:
-mysql-data:
+  mysql-data:
